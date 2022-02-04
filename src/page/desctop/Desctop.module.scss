@@ -13,3 +13,10 @@
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   grid-gap: 20px;
 }
+.innerFilter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  margin: 35px 0 45px;
+}

@@ -1,10 +1,29 @@
 import BtnTheme from "../btnTheme/BtnTheme";
-import "./Card.css";
-import pic1 from "../../assets/images/card/pic.png";
+import s from "./Card.module.scss";
 
-function Card() {
+function Card(props) {
   return (
-    <article class="card">
+    <article className={s.card}>
+      <img className={s.cardImg} src={props.cardPic} alt={props.card} />
+      <div className={s.content}>
+        <h2 className={s.cardTitle}>{props.titleCard}</h2>
+        <div className={s.cardDescription}>
+          <ul class={s.info}>
+            <li class={s.infoItem}>
+              <span class={s.infoItemActive}>Author:</span> Rembrandt
+            </li>
+            <li class={s.infoItem}>
+              <span class={s.infoItemActive}>Created:</span> 1642
+            </li>
+            <li class={s.infoItem}>
+              <span class={s.infoItemActive}>Location:</span> The Rijksmuseum
+            </li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    /* <article class="card">
       <div class="card__thumb">
         <img src={pic1} />
       </div>
@@ -22,7 +41,7 @@ function Card() {
           </li>
         </ul>
       </div>
-    </article>
+    </article> */
   );
 }
 export default Card;

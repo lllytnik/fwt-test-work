@@ -4,6 +4,7 @@ export const darkTheme = {
   textColor: "#fff",
   headingColor: "lightblue",
   btnFill: "#fff",
+  customSelect: "000",
 };
 
 export const lightTheme = {
@@ -11,6 +12,7 @@ export const lightTheme = {
   textColor: "#000",
   headingColor: "#d23669",
   btnFill: "#000",
+  customSelect: "fff",
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -24,4 +26,7 @@ export const GlobalStyles = createGlobalStyle`
    }
    button svg{
      fill: ${(props) => props.theme.btnFill};
-   }`;
+   }
+   background-color: ${(props) => props.theme.customSelect};
+   `
+

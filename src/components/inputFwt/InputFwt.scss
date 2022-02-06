@@ -1,7 +1,9 @@
-.formInput {
-  width: 265px;
+.Input {
+  min-width: 160px;
+  max-width: 265px;
+  width: 100%;
   height: 45px;
-  border: 1px solid black;
+  border: 1px solid #000;
   border-radius: 8px;
   outline: none;
   padding: 0 15px;
@@ -9,10 +11,16 @@
   overflow: hidden;
   text-overflow: ellipsis;
   background: transparent;
-  color: black;
+  color: #000;
 
   &--dark {
     color: white;
     border: 1px solid white;
+  }
+}
+
+@media (max-width: 619px) {
+  .Input {
+    max-width: 360px;
   }
 }

@@ -21,6 +21,8 @@
   }
 }
 .desctop {
+  display: flex;
+  flex-direction: column;
   padding-top: 35px;
 }
 .gallery__card {
@@ -87,4 +89,7 @@
       padding-top: 0px;
     }
   }
+}
+.paginationFwtt {
+  margin-top: 45px;
 }

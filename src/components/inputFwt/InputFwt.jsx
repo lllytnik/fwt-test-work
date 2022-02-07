@@ -3,6 +3,6 @@ import { Input } from "fwt-internship-uikit";
 import "./InputFwt.scss";
 
 function InputFwt(props) {
-  return <Input className={Input} placeholder={props.placeholder} />;
+  return <Input className="input" placeholder={props.placeholder} />;
 }
 export default InputFwt;

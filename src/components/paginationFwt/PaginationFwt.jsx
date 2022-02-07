@@ -1,16 +1,14 @@
 import { Pagination } from "fwt-internship-uikit";
-import s from "./PaginationFwt.module.scss";
+import "./PaginationFwt.scss";
 
 function PaginationFwt() {
   return (
-    <div>
-      <Pagination
-        className={s.PaginationPage}
-        pagesAmount={3}
-        currentPage={1}
-        onChange={(x) => x}
-      />
-    </div>
+    <Pagination
+      className={"pagination"}
+      pagesAmount={3}
+      currentPage={1}
+      onChange={(x) => x}
+    />
   );
 }
 export default PaginationFwt;

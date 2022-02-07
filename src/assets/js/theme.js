@@ -12,6 +12,21 @@ export const darkTheme = {
   selectBackground: "#000",
   selectBackgroundHover: "#fff",
   selectColorHover: "#000",
+  rangetBackground: "#000",
+  rangeColor: "#fff",
+  borderColor: "1px solid #fff",
+  paginationPageBackgroundActive: "#fff !important",
+  paginationPageBorderActive: "#fff !important",
+  paginationPageColorActive: "#000 !important",
+  paginationPageBorder: "1px solid #fff",
+  paginationPageColor: "#fff",
+  paginationPageBackgroundHover: "#464646",
+  paginationPageBorderHover: "1px solid #fff",
+  paginationPageColorHover: "#fff",
+  paginationPageBackgroundDisabled: "#000",
+  paginationPageBorderDisabled: "1px solid #4c4c4c",
+  paginationPageColorDisabled: "#4c4c4c",
+
 };
 
 export const lightTheme = {
@@ -27,6 +42,7 @@ export const lightTheme = {
   selectBackground: "#fff",
   selectBackgroundHover: "#000",
   selectColorHover: "#fff",
+  formInputBackground: "#EFEFEF",
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -57,6 +73,37 @@ export const GlobalStyles = createGlobalStyle`
  .Select__option:hover{
   background: ${(props) => props.theme.selectBackgroundHover};
   color: ${(props) => props.theme.selectColorHover};
+ }
+ .Range{
+  background: ${(props) => props.theme.rangetBackground};
+  color: ${(props) => props.theme.rangeColor};
+  border: ${(props) => props.theme.borderColor};
+ }
+ .Range__сontainer{
+  background: ${(props) => props.theme.rangetBackground};
+  color: ${(props) => props.theme.rangeColor};
+ }
+ .form__input{
+  background: ${(props) => props.theme.formInputBackground};
+ }
+ .PaginationPageWithActive{
+  background: ${(props) => props.theme.paginationPageBackgroundActive};
+  border: ${(props) => props.theme.paginationPageBorderActive};
+  color: ${(props) => props.theme.paginationPageColorActive};
+ }
+ .PaginationPage{
+  border: ${(props) => props.theme.paginationPageBorder};
+  color: ${(props) => props.theme.paginationPageColor};
+ }
+ .PaginationPage:hover{
+  background: ${(props) => props.theme.paginationPageBackgroundHover};
+  border: ${(props) => props.theme.paginationPageBorderHover};
+  color: ${(props) => props.theme.paginationPageColorHover};
+ }
+ .PaginationPage:disabled{
+  background: ${(props) => props.theme.paginationPageBackgroundDisabled};
+  border: ${(props) => props.theme.paginationPageBorderDisabled};
+  color: ${(props) => props.theme.paginationPageColorDisabled};
  }
    `
 

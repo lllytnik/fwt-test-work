@@ -5,7 +5,7 @@ function SelectFwt(props) {
   return (
     <div className="select__wrap">
       <Select
-        className={Select}
+        className="select"
         disabled={false}
         options={props.options}
         value={props.placeholder}

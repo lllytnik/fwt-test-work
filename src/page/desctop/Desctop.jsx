@@ -50,11 +50,9 @@ function Desctop() {
               <SelectFwt placeholder={"Author"} options={options} />
             </li>
             <li className={s.filterItem}>
-              {" "}
               <SelectFwt placeholder={"Location"} options={options2} />
             </li>
             <li className={s.filterItem}>
-              {" "}
               <RangeFwt />
             </li>
           </ul>

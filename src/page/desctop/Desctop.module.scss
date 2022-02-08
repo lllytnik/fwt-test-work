@@ -20,10 +20,16 @@
     padding: 0 20px;
   }
 }
+
 .desctop {
   display: flex;
   flex-direction: column;
-  padding-top: 35px;
+  padding: 35px 0 54px;
+}
+@media (max-width: 320px) {
+  .desctop {
+    padding: 25px 0 34px;
+  }
 }
 .gallery__card {
   display: grid;

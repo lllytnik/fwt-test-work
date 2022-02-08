@@ -53,6 +53,7 @@
     list-style: none;
     z-index: 1;
     background: white;
+    overflow: scroll;
     &--open {
       border-radius: 0 0 8px 8px;
       max-height: 300px;
@@ -95,6 +96,9 @@
     fill: #b3b3b3;
   }
 }
-.Arrow__opened {
+.Arrow__open {
   transform: rotate(180deg);
+}
+.simplebar-placeholder {
+  height: 0 !important;
 }

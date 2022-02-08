@@ -9,12 +9,17 @@ export const darkTheme = {
   inputBorder: "1px solid #fff",
   selectColor: "#fff",
   selectBorder: "1px solid #fff",
+  selectOpenBorderTop: "none",
+  selectOpenBorderBottom: "none",
+  selectBoxShadow: "0px 0px 0px 1px #fff;",
   selectBackground: "#000",
   selectBackgroundHover: "#fff",
   selectColorHover: "#000",
   rangetBackground: "#000",
   rangeColor: "#fff",
-  borderColor: "1px solid #fff",
+  randgeBorderColor: "1px solid #fff",
+  randgeBorderBottomColor: "1px solid transparent",
+  randgeBorderOpenColor: "none",
   paginationPageBackgroundActive: "#fff !important",
   paginationPageBorderActive: "#fff !important",
   paginationPageColorActive: "#000 !important",
@@ -41,6 +46,7 @@ export const lightTheme = {
   selectBorder: "1px solid #000",
   selectBackground: "#fff",
   selectBackgroundHover: "#000",
+  selectOpenBorderBottom: "none",
   selectColorHover: "#fff",
   formInputBackground: "#EFEFEF",
 };
@@ -69,6 +75,10 @@ export const GlobalStyles = createGlobalStyle`
  }
  .Select__optionContainer{
   background: ${(props) => props.theme.selectBackground};
+  box-shadow: ${(props) => props.theme.selectBoxShadow};
+ }
+ .Select--open{
+  border-bottom: ${(props) => props.theme.selectOpenBorderBottom};
  }
  .Select__option:hover{
   background: ${(props) => props.theme.selectBackgroundHover};
@@ -77,11 +87,18 @@ export const GlobalStyles = createGlobalStyle`
  .Range{
   background: ${(props) => props.theme.rangetBackground};
   color: ${(props) => props.theme.rangeColor};
-  border: ${(props) => props.theme.borderColor};
+  border: ${(props) => props.theme.randgeBorderColor};
+ }
+ .Range--open{
+  border-bottom: ${(props) => props.theme.randgeBorderBottomColor};
  }
  .Range__сontainer{
   background: ${(props) => props.theme.rangetBackground};
+  border: ${(props) => props.theme.randgeBorderColor};
   color: ${(props) => props.theme.rangeColor};
+ }
+ .Range__сontainer--open{
+  border-top: ${(props) => props.theme.randgeBorderOpenColor};
  }
  .form__input{
   background: ${(props) => props.theme.formInputBackground};

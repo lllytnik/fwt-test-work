@@ -36,7 +36,19 @@ function Desctop() {
     { id: 6, name: "The Tate Gallery" },
     { id: 7, name: "The Tate Gallery" },
   ];
-
+  /* useEffect(() => {
+    fetch(
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c&page=${page}`
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        setPage(res.page);
+        setData(res.results);
+        setFilmsAmountPerPage(res.results.length);
+        setPagesAmount(res.total_results);
+      })
+      .catch((error) => console.error("Ошибка:", error));
+  }, [page]); */
   return (
     <div className={s.container}>
       <div className={s.desctop}>

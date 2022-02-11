@@ -20,6 +20,7 @@ export const darkTheme = {
   randgeBorderColor: "1px solid #fff",
   randgeBorderBottomColor: "1px solid transparent",
   randgeBorderOpenColor: "none",
+  spanBackground: "#fff",
   paginationPageBackgroundActive: "#fff !important",
   paginationPageBorderActive: "#fff !important",
   paginationPageColorActive: "#000 !important",
@@ -100,6 +101,9 @@ export const GlobalStyles = createGlobalStyle`
  .Range__сontainer--open{
   border-top: ${(props) => props.theme.randgeBorderOpenColor};
  }
+ .form__span {
+  background: ${(props) => props.theme.spanBackground};
+ }
  .form__input{
   background: ${(props) => props.theme.formInputBackground};
  }
@@ -123,4 +127,3 @@ export const GlobalStyles = createGlobalStyle`
   color: ${(props) => props.theme.paginationPageColorDisabled};
  }
    `
-

@@ -1,11 +1,14 @@
+import React, { useState, useEffect } from "react";
 import Card from "../../components/card/Card";
 import Header from "../../components/header/Header";
-import CustomSelect from "../../components/customSelect/CustomSelect";
 import s from "./Desctop.module.scss";
 import InputFwt from "../../components/inputFwt/InputFwt";
 import SelectFwt from "../../components/selectFwt/SelectFwt";
+import PaginationFwt from "../../components/paginationFwt/PaginationFwt";
+import RangeFwt from "../../components/rangeFwt/RangeFwt";
+import { Pagination } from "fwt-internship-uikit";
 
-import cardPic1 from "../../assets/images/card/pic.png";
+/* import cardPic1 from "../../assets/images/card/pic.png";
 import cardPic2 from "../../assets/images/card/pic2.png";
 import cardPic3 from "../../assets/images/card/pic3.png";
 import cardPic4 from "../../assets/images/card/pic4.png";
@@ -13,12 +16,15 @@ import cardPic5 from "../../assets/images/card/pic5.png";
 import cardPic6 from "../../assets/images/card/pic6.png";
 import cardPic7 from "../../assets/images/card/pic7.png";
 import cardPic8 from "../../assets/images/card/pic8.png";
-import cardPic9 from "../../assets/images/card/pic9.png";
-import PaginationFwt from "../../components/paginationFwt/PaginationFwt";
-import RangeFwt from "../../components/rangeFwt/RangeFwt";
+import cardPic9 from "../../assets/images/card/pic9.png"; */
+import axios from "axios";
 
 function Desctop() {
-  const options = [
+  const [paintings, setPaintings] = useState(null);
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const optionsAuthor = [
     { id: 1, name: "Salvador dali" },
     { id: 2, name: "Vincent van gogh" },
     { id: 3, name: "Claude monet" },
@@ -27,7 +33,7 @@ function Desctop() {
     { id: 6, name: "Vincent van gogh" },
     { id: 7, name: "Claude monet" },
   ];
-  const options2 = [
+  const optionsLocation = [
     { id: 1, name: "The Tate Gallery" },
     { id: 2, name: "Santa Maria delle Grazie" },
     { id: 3, name: "Santa Maria delle Grazie" },
@@ -36,19 +42,37 @@ function Desctop() {
     { id: 6, name: "The Tate Gallery" },
     { id: 7, name: "The Tate Gallery" },
   ];
-  /* useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c&page=${page}`
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        setPage(res.page);
-        setData(res.results);
-        setFilmsAmountPerPage(res.results.length);
-        setPagesAmount(res.total_results);
-      })
-      .catch((error) => console.error("Ошибка:", error));
-  }, [page]); */
+
+  const url = "https://test-front.framework.team";
+
+  async function fetchHandler() {
+    try {
+      const paintingsRes = await axios.get(
+        url + `/paintings?_page=${currentPage}&_limit=9`
+      );
+      const authorsRes = await axios.get(url + "/authors");
+      const locationsRes = await axios.get(url + "/locations");
+      const data = paintingsRes.data.map((p) => {
+        const authorName =
+          authorsRes.data.find((a) => a.id === p.authorId)?.name || "noname";
+        const locationName =
+          locationsRes.data.find((l) => l.id === p.locationId)?.location ||
+          "no-location";
+        return { ...p, authorName, locationName, imageUrl: url + p.imageUrl };
+      });
+      setPaintings(data);
+      setTotalAmount(data.length);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchHandler();
+  }, [currentPage]);
+
+  if (!paintings) return <div>loading..</div>;
+
   return (
     <div className={s.container}>
       <div className={s.desctop}>
@@ -59,99 +83,36 @@ function Desctop() {
               <InputFwt placeholder={"Name"} />
             </li>
             <li className={s.filterItem}>
-              <SelectFwt placeholder={"Author"} options={options} />
+              <SelectFwt placeholder={"Author"} options={optionsAuthor} />
             </li>
             <li className={s.filterItem}>
-              <SelectFwt placeholder={"Location"} options={options2} />
+              <SelectFwt placeholder={"Location"} options={optionsLocation} />
             </li>
             <li className={s.filterItem}>
-              <RangeFwt />
+              <RangeFwt value={"Author"} />
             </li>
           </ul>
-
-          {/* <SelectFwt placeholder="Created" /> */}
-
-          {/* <CustomSelect options={options} placeholder="Author" /> */}
-          {/* <CustomSelect options={options2} placeholder="Location" /> */}
-          {/* <CustomSelect placeholder="Created" /> */}
         </div>
 
         <div className={s.gallery__card}>
-          <Card
-            cardAlt={"The Persistence of Memory"}
-            titleCard={"The Persistence of Memory"}
-            cardPic={cardPic1}
-            author={"Rembrandt"}
-            created={"1642"}
-            location={"The Rijksmuseum"}
-          />
-          <Card
-            cardAlt={"The Starry Night"}
-            titleCard={"The Starry Night"}
-            cardPic={cardPic2}
-            author={"Vincent van Gogh"}
-            created={"1889"}
-            location={"Museum of Modern Art"}
-          />
-          <Card
-            cardAlt={"The Flying Carpet"}
-            titleCard={"The Flying Carpet"}
-            cardPic={cardPic3}
-            author={"Viktor Mikhailovich Vasnetsov"}
-            created={"1880"}
-            location={"Museum"}
-          />
-          <Card
-            cardAlt={"Impression, Sunrise"}
-            titleCard={"Impression, Sunrise"}
-            cardPic={cardPic4}
-            author={"Claude Monet"}
-            created={"1872"}
-            location={"Musée Marmottan Monet"}
-          />
-          <Card
-            cardAlt={"The Night Watch"}
-            titleCard={"The Night Watch"}
-            cardPic={cardPic5}
-            author={"Rembrandt van Rijn"}
-            created={"1642"}
-            location={"Amsterdam Museum"}
-          />
-          <Card
-            cardAlt={"Mont Sainte-Victoire"}
-            titleCard={"Mont Sainte-Victoire"}
-            cardPic={cardPic6}
-            author={"Paul Cézanne"}
-            created={"1904"}
-            location={"Musée d'Orsay"}
-          />
-          <Card
-            cardAlt={"Still Life with Compote and Glass"}
-            titleCard={"Still Life with Compote and Glass"}
-            cardPic={cardPic7}
-            author={"Pablo Picasso"}
-            created={"1914"}
-            location={"Columbus Museum of Art"}
-          />
-          <Card
-            cardAlt={"Arrangement in Grey and Black"}
-            titleCard={"Arrangement in Grey and Black"}
-            cardPic={cardPic8}
-            author={"James McNeill Whistler"}
-            created={"1871"}
-            location={"Musée d'Orsay"}
-          />
-
-          <Card
-            cardAlt={"The Last Supper"}
-            titleCard={"The Last Supper"}
-            cardPic={cardPic9}
-            author={"Leonardo da Vinci"}
-            created={"1495"}
-            location={"Santa Maria delle Grazie"}
-          />
+          {paintings.map((p) => (
+            <Card
+              key={p.id}
+              cardAlt={p.name}
+              titleCard={p.name}
+              cardPic={p.imageUrl}
+              author={p.authorName}
+              created={p.created}
+              location={p.locationName}
+            />
+          ))}
         </div>
-        <PaginationFwt />
+        <Pagination
+          className={"pagination"}
+          pagesAmount={totalAmount}
+          currentPage={currentPage}
+          onChange={(page) => setCurrentPage(page)}
+        />
       </div>
     </div>
   );

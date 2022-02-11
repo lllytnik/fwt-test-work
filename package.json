@@ -2,7 +2,7 @@
   "name": "front-end-fwt",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://yourusername.github.io/repository-name",
+  "homepage":"https://lllytnik.github.io/fwt-test-work",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",

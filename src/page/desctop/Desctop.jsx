@@ -1,23 +1,13 @@
+import s from "./Desctop.module.scss";
 import React, { useState, useEffect } from "react";
+import { Pagination } from "fwt-internship-uikit";
+import axios from "axios";
 import Card from "../../components/card/Card";
 import Header from "../../components/header/Header";
-import s from "./Desctop.module.scss";
 import InputFwt from "../../components/inputFwt/InputFwt";
 import SelectFwt from "../../components/selectFwt/SelectFwt";
-import PaginationFwt from "../../components/paginationFwt/PaginationFwt";
 import RangeFwt from "../../components/rangeFwt/RangeFwt";
-import { Pagination } from "fwt-internship-uikit";
-
-/* import cardPic1 from "../../assets/images/card/pic.png";
-import cardPic2 from "../../assets/images/card/pic2.png";
-import cardPic3 from "../../assets/images/card/pic3.png";
-import cardPic4 from "../../assets/images/card/pic4.png";
-import cardPic5 from "../../assets/images/card/pic5.png";
-import cardPic6 from "../../assets/images/card/pic6.png";
-import cardPic7 from "../../assets/images/card/pic7.png";
-import cardPic8 from "../../assets/images/card/pic8.png";
-import cardPic9 from "../../assets/images/card/pic9.png"; */
-import axios from "axios";
+import PaginationFwt from "../../components/paginationFwt/PaginationFwt";
 
 function Desctop() {
   const [paintings, setPaintings] = useState(null);
@@ -48,7 +38,7 @@ function Desctop() {
   async function fetchHandler() {
     try {
       const paintingsRes = await axios.get(
-        url + `/paintings?_page=${currentPage}&_limit=9`
+        url + `/paintings?_page=${currentPage}&_limit=6`
       );
       const authorsRes = await axios.get(url + "/authors");
       const locationsRes = await axios.get(url + "/locations");
@@ -58,8 +48,14 @@ function Desctop() {
         const locationName =
           locationsRes.data.find((l) => l.id === p.locationId)?.location ||
           "no-location";
-        return { ...p, authorName, locationName, imageUrl: url + p.imageUrl };
+        return {
+          ...p,
+          authorName,
+          locationName,
+          imageUrl: url + p.imageUrl,
+        };
       });
+      console.log(data);
       setPaintings(data);
       setTotalAmount(data.length);
     } catch (error) {

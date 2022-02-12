@@ -22,6 +22,8 @@
   color: black;
   border-radius: 8px;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
   cursor: pointer;
   &--dark {
     border: 1px solid white;
@@ -67,6 +69,11 @@
     }
   }
 }
+@media (max-width: 375px) {
+  .Range__сontainer {
+    max-width: 335px;
+  }
+}
 
 .form {
   width: 100%;
@@ -91,6 +98,7 @@
   padding: 15px;
   width: 95px;
   height: 45px;
+  font-family: "Roboto", sans-serif;
   background: #ffffff;
   border-radius: 8px;
 }

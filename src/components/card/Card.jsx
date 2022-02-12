@@ -8,7 +8,8 @@ function Card(props) {
         src={props.cardPic}
         alt={props.card}
         onError={(e) => {
-          e.currentTarget.src = "/images/nonePic.png";
+          /* e.currentTarget.src = "/images/nonePic.png"; */
+          e.currentTarget.src = "../../assets/images/card/nonePic.png";
         }}
       />
       <div className={s.content}>
@@ -22,7 +23,7 @@ function Card(props) {
               <span className={s.infoItemActive}>Created:</span> {props.created}
             </li>
             <li className={s.infoItem}>
-              <span className={s.infoItemActive}>Location:</span>
+              <span className={s.infoItemActive}>Location:</span>{" "}
               {props.location}
             </li>
           </ul>

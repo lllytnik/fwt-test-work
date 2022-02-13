@@ -38,7 +38,7 @@ function Desctop() {
   async function fetchHandler() {
     try {
       const paintingsRes = await axios.get(
-        url + `/paintings?_page=${currentPage}&_limit=6`
+        url + `/paintings?_page=${currentPage}&_limit=9`
       );
       const authorsRes = await axios.get(url + "/authors");
       const locationsRes = await axios.get(url + "/locations");

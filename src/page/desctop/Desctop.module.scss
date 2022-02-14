@@ -34,8 +34,24 @@
 .gallery__card {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-auto-rows: 275px;
   justify-items: center;
   grid-gap: 20px;
+}
+@media (max-width: 1024px) {
+  .gallery__card {
+    grid-auto-rows: 230px;
+  }
+}
+@media (max-width: 768px) {
+  .gallery__card {
+    grid-auto-rows: 249px;
+  }
+}
+@media (max-width: 320px) {
+  .gallery__card {
+    grid-auto-rows: 205px;
+  }
 }
 .filterList {
   display: flex;
